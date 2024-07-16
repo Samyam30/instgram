@@ -19,22 +19,10 @@ export default function AuthLayout({
   }
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div>{children}</div>
     </div>
   );}
 
 
 
-
-// export default function Page() {
- 
-
-
-//   return (
-//     <>
-//       <h1>Protected Page</h1>
-//       <p>You can view this page because you are signed in.</p>
-//     </>
-//   )
-// }

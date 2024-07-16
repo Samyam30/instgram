@@ -9,9 +9,9 @@ export default function Home() {
   }
   console.log("hello")
   return (
-   <>
-    <h1>This is home page</h1>
-    <Button variant="outline" size="lg" className="bg-neutral-950 text-red-600 text-3xl align-middle" onClick={handlelog}>LOGIN</Button>
-   </>
+   <div >
+    <h1 className="rooth">Welcome to Instagram Clone</h1>
+    <Button variant="outline" size="lg" className="rootButton bg-neutral-950 text-red-600 text-3xl align-middle content-center" onClick={handlelog}>LOGIN</Button>
+   </div>
   );
 }

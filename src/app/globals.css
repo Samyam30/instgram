@@ -70,3 +70,40 @@
   html{
     background-color: white;
   }
+  .rootButton{
+    margin-top:14%;
+    margin-left:45%;
+  }
+  .rooth{
+    margin-left:7%;
+    font-size: 100px;
+
+  }
+  .left,.right{
+    width: 15%;
+
+  }
+  .middle{
+    width: 70%;
+  }
+  .storyCircle{
+    border-radius: 50%;
+    border-color: black;
+    
+    border-style: solid;
+    background-color: aqua;
+    height:80px;
+    width:80px;
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 25px;
+    margin-left: 10px;
+    margin-right: 20px;
+    min-height: 80px;
+    min-width: 80px;
+  }
+  .posts{
+    margin-left: 30%;
+    margin-right: 30%;
+  }
