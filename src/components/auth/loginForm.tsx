@@ -16,6 +16,7 @@ export default function LoginForm() {
   }, [status]);
 
   console.log(status);
+  
 
   return (
     <div className='mx-auto my-8 p-8 max-w-lg bg-zinc-100 rounded-sm'>
