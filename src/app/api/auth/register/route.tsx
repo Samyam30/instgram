@@ -50,7 +50,6 @@
 
 
 
-
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { sql } from "@vercel/postgres";
@@ -68,9 +67,9 @@ export async function POST(request: Request) {
 
     // Create the users table if it doesn't exist
     await sql`
-      CREATE TABLE users (
+      CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
-        email TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL
       );
     `;

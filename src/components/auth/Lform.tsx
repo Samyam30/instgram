@@ -54,7 +54,7 @@ export default function LoginForm() {
       });
       console.log({ response });
       if (!response?.error) {
-        router.push("/");
+        router.push("/dashboard");
         router.refresh();
       }
 
@@ -74,14 +74,14 @@ export default function LoginForm() {
     <Form {...form} >
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="text-white p-4 md:p-16 border-[1.5px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-6"
+        className="text-white ml-[71px] p-4 md:p-4 border-[1.5px] w-[300px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-3"
       >
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Provide Email</FormLabel>
+              <FormLabel className="text-blue-700">Provide Email</FormLabel>
               <FormControl>
                 <Input
                   className="text-black"
@@ -98,11 +98,11 @@ export default function LoginForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Provide Password</FormLabel>
+              <FormLabel className="text-blue-700">Provide Password</FormLabel>
               <FormControl>
                 <Input
                   className="text-black"
-                  placeholder="Hasło"
+                  placeholder="Password"
                   {...field}
                   type="password"
                 />
@@ -115,7 +115,7 @@ export default function LoginForm() {
           className="hover:scale-110 hover:bg-cyan-700"
           disabled={form.formState.isSubmitting}
         >
-          {form.formState.isSubmitting ? "Opening...." : "Open Sesame!"}
+          {form.formState.isSubmitting ? "Opening...." : "Submit!"}
         </Button>
       </form>
     </Form>

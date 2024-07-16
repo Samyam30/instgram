@@ -19,14 +19,14 @@ export default function LoginForm() {
   
 
   return (
-    <div className='mx-auto my-8 p-8 max-w-lg bg-zinc-100 rounded-sm'>
+    <div className='mx-auto my-8 w-[500px] p-8 max-w-[500px] bg-white border-2 border-black border-solid' >
       <h2 className='text-center text-2xl text-blue-400 mb-8 font-bold'>
         Sign in
       </h2>
       <div>
         <p className='mb-4'>
           Sign in to your account or{' '}
-          <Link href='/register' className='underline'>
+          <Link href='/auth/register' className='underline'>
             create a new account.
           </Link>
         </p>

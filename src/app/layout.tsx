@@ -17,10 +17,9 @@ export default async function RootLayout({
     <html lang='en' className="-p-2">
       <body >
         <SessionProvider session={session}>
-          <div className='max-w-6xl mx-auto'>
-            <NavBar />
+
+            {/* <NavBar /> */}
             <main className='my-4'>{children}</main>
-          </div>
         </SessionProvider>
       </body>
     </html>
