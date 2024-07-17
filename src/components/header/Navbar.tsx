@@ -4,7 +4,7 @@ import SignInButton from './signinButton';
 import SignOutButton from './signoutButton';
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import Story from '../dialogue/story';
+import Story from '../dashboard/story';
 import { number } from 'zod';
 export default function Navbar() {
   const { data: session, status } = useSession();

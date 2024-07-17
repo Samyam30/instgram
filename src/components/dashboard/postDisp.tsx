@@ -13,6 +13,9 @@ import {
 interface props{
   arrayProp:{
     id:string,
+    image_url:string,
+    email:string,
+    created_at:string
   }[]
 }
 const CarouselDApiDemo:React.FC<props>=({arrayProp})=> {
@@ -45,6 +48,7 @@ const CarouselDApiDemo:React.FC<props>=({arrayProp})=> {
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6 border-2 border-solid border-red-400">
                   <span className="text-4xl font-semibold">id is {item.id}</span>
+                  <span>email is {item.email}</span>
                 </CardContent>
               </Card>
             </CarouselItem>
