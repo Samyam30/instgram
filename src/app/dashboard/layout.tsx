@@ -1,5 +1,5 @@
 "use client"
-import Navbar from "@/components/header/Navbar";
+
 
 import { useSession, getSession } from "next-auth/react"
 import { redirect } from "next/navigation";
@@ -19,7 +19,8 @@ export default function AuthLayout({
   }
   return (
     <div>
-      {/* <Navbar /> */}
+  
+
       <div>{children}</div>
     </div>
   );}

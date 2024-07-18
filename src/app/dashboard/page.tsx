@@ -1,21 +1,22 @@
 "use client"
 import Navbar from "@/components/header/Navbar";
-import PostDisp from "@/components/dashboard/postDisp" 
+import PostDisp from "@/components/dashboard/post/postDisp" 
 import ProfileIcon from "@/components/dashboard/profileIcon";
 import { useEffect, useState } from "react";
 export default function dashboard(){
   // const data2=[{id:'1'},{id:'2'}];
   const [postInfo,setPostinfo]=useState([]);
-  const data1=async()=>{
-    try{
-      const posts=await fetch('/api/dashboard/postPhotos/getPosts');
-      const res=await posts.json();
-      setPostinfo(res.data.rows);
-    }catch(err){
-      console.log("error in fetch "+err);
-    }
-  }
+
   useEffect(()=>{
+    const data1=async()=>{
+      try{
+        const posts=await fetch('/api/dashboard/postPhotos/getPosts');
+        const res=await posts.json();
+        setPostinfo(res.data.rows);
+      }catch(err){
+        console.log("error in fetch "+err);
+      }
+    }
     data1();
   },[])
   console.log(postInfo);

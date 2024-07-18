@@ -1,7 +1,10 @@
 "use client"
 import * as React from "react"
-
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import PostComment from '../comment/postComment';
+import ShowComments from '../comment/showComment'
+
 import {
   Carousel,
   CarouselContent,
@@ -10,6 +13,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
+import Like from "../Like/like";
 interface props{
   arrayProp:{
     id:string,
@@ -19,6 +23,7 @@ interface props{
   }[]
 }
 const CarouselDApiDemo:React.FC<props>=({arrayProp})=> {
+
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
   const [count, setCount] = React.useState(0)
@@ -36,23 +41,34 @@ const CarouselDApiDemo:React.FC<props>=({arrayProp})=> {
     })
   }, [api])
 
+
+
   return (
     <div className="posts">
       {arrayProp.map((item)=>{
         return(
           <>
-            <Carousel setApi={setApi} className="w-full max-w-xs border-2 border-solid border-red-950 mt-10">
+            <Carousel setApi={setApi} key={item.id} className="w-full max-w-xs border-2 border-solid border-red-950 mt-10">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6 border-2 border-solid border-red-400">
-                  <span className="text-4xl font-semibold">id is {item.id}</span>
-                  <span>email is {item.email}</span>
+                <CardContent className="flex flex-col items-center p-6 border-2 border-solid border-red-400">
+                  <img src={item.image_url} className="w-[200px] h-[150px] flex-2"></img>
+                  <span className="text-sm font-semibold flex-1">id is {item.id}</span>
+                  <span className="text-xs flex-1">email is {item.email}</span>
+                  <span className="text-xs flex-1">Uploaded at {item.created_at}</span>
                 </CardContent>
               </Card>
+              <div>Like, Comment</div>
+              < Like email={item.email} photo_id={item.id}/>
+              <div className="flex flex-col gap-3 ">
+                < PostComment email={item.email} photo_id={item.id}/>
+                < ShowComments />
+              </div>
             </CarouselItem>
           ))}
+          <div>hello</div>
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

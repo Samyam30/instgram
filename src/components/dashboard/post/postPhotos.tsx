@@ -4,16 +4,17 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 interface PostsForm {
-  image_url: string;
+  // image_url: any;
   email: string;
 }
 
 interface Photos {
-  image: string;
+  image_url: any;
 }
 
-export default function PostPhotos({ image }: Photos) {
-  const [formdata, setFormdata] = useState<PostsForm>({ image_url: image, email: '' });
+export default function PostPhotos({ image_url }: Photos) {
+  console.log("iamge 1 is "+image_url)
+  const [formdata, setFormdata] = useState<PostsForm>({email: '' });
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -29,7 +30,7 @@ export default function PostPhotos({ image }: Photos) {
     event.preventDefault(); // Prevent the default form submission behavior
     console.log("Submitting form", formdata);
 
-    const { image_url, email } = formdata;
+    const { email } = formdata;
 
     try {
       const response = await fetch("/api/dashboard/postPhotos", {
@@ -39,7 +40,7 @@ export default function PostPhotos({ image }: Photos) {
         },
         body: JSON.stringify({ image_url, email }),
       });
-
+      console.log(response);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(`Network response was not ok: ${errorData.message || 'Unknown error'}`);
@@ -64,14 +65,14 @@ export default function PostPhotos({ image }: Photos) {
           onChange={handleChange} 
           value={formdata.email} 
         /><br />
-        <label htmlFor="image_url">Image URL:</label>
-        <input 
+        {/* <label htmlFor="image_url">Image URL:</label> */}
+        {/* <input 
           id="image_url" 
           name="image_url" 
           type="text" 
           onChange={handleChange} 
           value={formdata.image_url} 
-        /><br />
+        /><br /> */}
         <Button type="submit">Post</Button>
       </form>
     </>

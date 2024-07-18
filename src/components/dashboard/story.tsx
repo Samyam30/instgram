@@ -16,8 +16,7 @@ export default function story({propArray}:props){
     <div className='overflow-scroll flex flex-row flex-auto'>
       {propArray.map((item)=>{
         return(
-        
-          <Dialog>
+          <Dialog key={item.id}>
   <DialogTrigger asChild>
   <div className='storyCircle ' key={item.id}>{item.id}</div>
   </DialogTrigger>
