@@ -8,7 +8,9 @@ interface comm{
   photo_id:any,
   created_at:string
 }
-export default function showComment(){
+
+export default function showComment({photo_id}:any){
+  console.log(photo_id);
   const [comments,setComments]=useState<comm[]>([]);
   useEffect(()=>{
     const fetching=async()=>{
@@ -23,17 +25,30 @@ export default function showComment(){
    fetching();
   },[])
   console.log("comment is ");
-  console.log(comments);
-
+  // console.log(comments);
+  const arr=comments.filter((item)=>
+    item.id==photo_id
+  )
+  console.log(arr);
   return(<>
     <h1>Comments are shown here:: </h1><br></br>
-    {comments.map((item)=>
-      (
-        <div key={item.id}>
+    {comments.map((item)=>{
+      if (photo_id==item.id){
+        console.log("id matched");
+        return (
+          <div key={item.id}>
           <div className="text-red-600">{item.email} : {item.comment}</div>
         </div>
+        )
+      }
+      // return
+      // (
+      //   <div key={item.id}>
+      //     <div className="text-red-600">{item.email} : {item.comment}</div>
+      //   </div>
         
-      )  
+      // )  
+      }
     )}
     
   </>)

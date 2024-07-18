@@ -64,7 +64,7 @@ const CarouselDApiDemo:React.FC<props>=({arrayProp})=> {
               < Like email={item.email} photo_id={item.id}/>
               <div className="flex flex-col gap-3 ">
                 < PostComment email={item.email} photo_id={item.id}/>
-                < ShowComments />
+                < ShowComments photo_id={item.id}/>
               </div>
             </CarouselItem>
           ))}
