@@ -3,12 +3,15 @@ import { sql } from "@vercel/postgres";
 
 export async function POST(request: Request) {
   try {
-    const { comment, email,photo_id } = await request.json();
-    if (!email || !comment ||!photo_id) {
-      return NextResponse.json({ message: "email and image_url are required" }, { status: 400 });
+    const { comment, email, photo_id } = await request.json();
+    if (!email || !comment || !photo_id) {
+      return NextResponse.json(
+        { message: "email and image_url are required" },
+        { status: 400 }
+      );
     }
 
-    console.log({comment, email, photo_id });
+    console.log({ comment, email, photo_id });
 
     // Create the photos table if it doesn't exist
     await sql`
@@ -33,7 +36,9 @@ CREATE TABLE IF NOT EXISTS comments(
     console.error("Error in POST request:", e);
 
     // Return error response
-    return NextResponse.json({ message: "Internal server error", error: e }, { status: 500 });
+    return NextResponse.json(
+      { message: "Internal server error", error: e },
+      { status: 500 }
+    );
   }
 }
-

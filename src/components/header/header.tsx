@@ -1,10 +1,12 @@
 import SignOutButton from "./signoutButton";
 
-export default function header(){
+export default function header() {
   return (
-    <div className="w-screen h-[120px] bg-green-400 flex flex-row justify-between -mt-8">
-      this is header
+    <div
+      className="w-full h-[120px]  flex flex-row justify-between -mt-8 pt-12 pl-4 mb-10 items-end
+    "
+    >
       <SignOutButton />
     </div>
-  )
+  );
 }

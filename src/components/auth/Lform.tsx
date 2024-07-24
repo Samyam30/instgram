@@ -71,7 +71,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Form {...form} >
+    <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="text-white ml-[71px] p-4 md:p-4 border-[1.5px] w-[300px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-3"

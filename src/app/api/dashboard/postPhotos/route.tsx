@@ -5,7 +5,10 @@ export async function POST(request: Request) {
   try {
     const { image_url, email } = await request.json();
     if (!email || !image_url) {
-      return NextResponse.json({ message: "email and image_url are required" }, { status: 400 });
+      return NextResponse.json(
+        { message: "email and image_url are required" },
+        { status: 400 }
+      );
     }
 
     console.log({ email, image_url });
@@ -31,7 +34,9 @@ CREATE TABLE IF NOT EXISTS photos (
     console.error("Error in POST request:", e);
 
     // Return error response
-    return NextResponse.json({ message: "Internal server error", error: e }, { status: 500 });
+    return NextResponse.json(
+      { message: "Internal server error", error: e },
+      { status: 500 }
+    );
   }
 }
-

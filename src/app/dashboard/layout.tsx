@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-
-import { useSession, getSession } from "next-auth/react"
+import LeftBar from "../../components/dashboard/leftBar/leftBar";
+import { useSession, getSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 export default function AuthLayout({
   children,
@@ -9,21 +9,20 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   const { data: session, status } = useSession();
-  
+
   if (status === "loading") {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
   if (status === "unauthenticated") {
-    redirect('/auth/login');
+    redirect("/auth/login");
   }
   return (
     <div>
-  
-
+      <div className="left bg-white h-screen flex flex-column justify-between  border-r-solid border-r-[1.5px] border-r-stone-500 fixed">
+        <LeftBar />
+      </div>
       <div>{children}</div>
     </div>
-  );}
-
-
-
+  );
+}

@@ -1,14 +1,12 @@
-
-import { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import Login from '../../../auth/login/page';
-import { signIn } from 'next-auth/react';
+import { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import Login from "../../../auth/login/page";
+import { signIn } from "next-auth/react";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
-
   session: {
     strategy: "jwt",
   },
@@ -19,8 +17,8 @@ export const authOptions: NextAuthOptions = {
 
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -52,5 +50,4 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-
 };

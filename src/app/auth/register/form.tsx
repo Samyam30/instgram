@@ -63,8 +63,11 @@ export default function FormPage() {
   };
 
   return (
-    <Form {...form} >
-      <form onSubmit={form.handleSubmit(onSubmit)}  className="text-white ml-[71px] p-4 md:p-4 border-[1.5px] w-[300px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-3 mt-5">
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="text-white ml-[71px] p-4 md:p-4 border-[1.5px] w-[300px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-3 mt-5"
+      >
         <FormField
           control={form.control}
           name="username"
@@ -92,7 +95,9 @@ export default function FormPage() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="hover:scale-110 hover:bg-cyan-700">Sign up</Button>
+        <Button type="submit" className="hover:scale-110 hover:bg-cyan-700">
+          Sign up
+        </Button>
       </form>
     </Form>
   );

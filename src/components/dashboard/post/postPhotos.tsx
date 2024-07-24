@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
+import { useSession } from "next-auth/react";
 interface PostsForm {
-  // image_url: any;
   email: string;
 }
 
@@ -13,14 +12,17 @@ interface Photos {
 }
 
 export default function PostPhotos({ image_url }: Photos) {
-  console.log("iamge 1 is "+image_url)
-  const [formdata, setFormdata] = useState<PostsForm>({email: '' });
+  const { data: session, status } = useSession();
+  console.log("iamge 1 is " + image_url);
+  const [formdata, setFormdata] = useState<PostsForm>({
+    email: session?.user?.email ?? "",
+  });
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormdata((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -43,12 +45,13 @@ export default function PostPhotos({ image_url }: Photos) {
       console.log(response);
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(`Network response was not ok: ${errorData.message || 'Unknown error'}`);
+        throw new Error(
+          `Network response was not ok: ${errorData.message || "Unknown error"}`
+        );
       }
 
       // Process response here
       console.log("Registration Successful", await response.json());
-
     } catch (error: any) {
       console.error("Registration Failed:", error);
     }
@@ -58,24 +61,17 @@ export default function PostPhotos({ image_url }: Photos) {
     <>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Enter your email:</label>
-        <input 
-          id="email" 
-          name="email" 
-          type="text" 
-          onChange={handleChange} 
-          value={formdata.email} 
-        /><br />
-        {/* <label htmlFor="image_url">Image URL:</label> */}
-        {/* <input 
-          id="image_url" 
-          name="image_url" 
-          type="text" 
-          onChange={handleChange} 
-          value={formdata.image_url} 
-        /><br /> */}
+        <input
+          readOnly
+          id="email"
+          name="email"
+          type="text"
+          onChange={handleChange}
+          value={formdata.email}
+        />
+        <br />
         <Button type="submit">Post</Button>
       </form>
     </>
   );
 }
-
