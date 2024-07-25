@@ -46,7 +46,7 @@ const CardPost: React.FC<props> = ({ arrayProp }) => {
                 <form>
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5 ">
-                      <Image
+                      <img
                         src={item.image_url}
                         alt="imgPost"
                         className="w-[600px] h-[300px] flex-2 border-[1.5px] border-zinc-200 rounded-lg border-solid p-5"

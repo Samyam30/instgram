@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import DispMsg from "@/components/dashboard/messaging/DispMsg";
 import messages from "@/components/images/Messenger.png";
 
-const socket = io("ws://localhost:5000"); // Ensure this matches your server setup
+const socket = io("https://socket-server-rose.vercel.app/"); // Ensure this matches your server setup
 
 interface dat {
   text: string;
@@ -83,7 +83,7 @@ const App = () => {
           </div>
           <div className="h-[75px] mx-[20px] my-[20px] flex flex-row flex-wrap gap-[20px] w-[650px] border-solid border-[1.5px] border-black rounded-xl">
             <input
-              className="w-[420px] h-[70px] hover:border-0 outline-none"
+              className="w-[420px] h-[70px] hover:border-0 outline-none pl-4"
               placeholder="Message"
               onChange={(e) => setMessage(e.target.value)}
               value={message}

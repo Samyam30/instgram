@@ -18,8 +18,8 @@ export default function DispMsg({
     <div
       className={`border-[1.5px] border-solid rounded-lg h-auto max-h-[100px] mt-4 ${
         isSent
-          ? "border-blue-600 bg-blue-600 ml-auto mr-0"
-          : "border-zinc-700 bg-zinc-500 mr-auto ml-5"
+          ? "border-blue-500 bg-blue-500 ml-auto mr-4 p-2"
+          : "border-zinc-500 bg-zinc-500 mr-auto ml-5 p-2"
       }`}
       style={{ maxWidth: "300px", width: "auto" }}
     >
