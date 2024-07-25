@@ -14,7 +14,9 @@ export default function ShowComment({ photo_id }: any) {
   useEffect(() => {
     const fetching = async () => {
       try {
-        const data = await fetch("/api/dashboard/comments/getComments");
+        const data = await fetch("/api/dashboard/comments/getComments", {
+          next: { revalidate: 1 },
+        });
         const res = await data.json();
         setComments(res.data.rows);
       } catch (err) {
