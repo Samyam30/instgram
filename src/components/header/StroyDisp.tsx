@@ -1,13 +1,12 @@
 "use client";
 import { useSession, signIn } from "next-auth/react";
-import SignInButton from "./signinButton";
-import SignOutButton from "./signoutButton";
+import SignInButton from "./SigninButton";
+import SignOutButton from "./SignoutButton";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import Story from "../dashboard/story";
+import Story from "../dashboard/Story";
 import { number } from "zod";
 import { useEffect, useState } from "react";
-import story from "../dashboard/story";
 interface story {
   id: any;
   iamge: string;

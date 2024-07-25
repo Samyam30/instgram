@@ -11,7 +11,7 @@ interface userin {
   email: string;
   password: string;
 }
-export default function dashboard() {
+export default function Dashboard() {
   const [postInfo, setPostinfo] = useState([]);
   const [users, setUsers] = useState<userin[]>([]);
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function dashboard() {
   useEffect(() => {
     const data1 = async () => {
       try {
-        const posts = await fetch("/api/dashboard/postPhotos/getPosts");
+        const posts = await fetch("/api/dashboard/PostPhotos/GetPosts");
         const res = await posts.json();
         setPostinfo(res.data.rows);
       } catch (err) {
@@ -31,7 +31,7 @@ export default function dashboard() {
   useEffect(() => {
     const data2 = async () => {
       try {
-        const posts = await fetch("/api/getUsers");
+        const posts = await fetch("/api/GetUsers");
         const res = await posts.json();
         setUsers(res.data.rows);
       } catch (err) {
@@ -51,7 +51,7 @@ export default function dashboard() {
         <div className=" flex flex-row gap-5">
           <ProfileIcon email={session?.user?.email} />
           <div className="mt-[78px]">
-            <Link href="/dashboard/profile">{session?.user?.email}</Link>
+            <Link href="/dashboard/Profile">{session?.user?.email}</Link>
           </div>
         </div>
         <div className="text-zinc-500 ml-[25px]">Suggestions For You</div>
@@ -65,7 +65,7 @@ export default function dashboard() {
                 <div>{item.email}</div>
                 <div className="text-blue-300 mr-[25px]">
                   <Link
-                    href={`/dashboard/profile/otherProfile?user=${item.email}`}
+                    href={`/dashboard/Profile/OtherProfile?user=${item.email}`}
                   >
                     Folow
                   </Link>

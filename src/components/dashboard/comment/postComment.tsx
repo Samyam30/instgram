@@ -5,7 +5,7 @@ interface data {
   email: string;
   photo_id: string;
 }
-export default function postComment({ email, photo_id }: data) {
+export default function PostComment({ email, photo_id }: data) {
   const [comment, setComment] = useState<string>("");
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();

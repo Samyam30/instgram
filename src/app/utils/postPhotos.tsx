@@ -1,6 +1,6 @@
 // src/utils/fetchImageData.ts
-import { list } from '@vercel/blob';
-import PostPhotos from '../../components/dashboard/post/postPhotos';
+import { list } from "@vercel/blob";
+import PostPhotos from "../../components/dashboard/post/PostPhotos";
 
 export const postPhotos = async () => {
   const response = await list();

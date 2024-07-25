@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
 import { useRouter } from "next/navigation";
-import PostStory from "@/components/dashboard/postStory";
+import PostStory from "@/components/dashboard/PostStory";
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 import {
@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function profileIcon({ email }: any) {
+export default function ProfileIcon({ email }: any) {
   const [open, setOpen] = useState(false);
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);

@@ -9,7 +9,7 @@ interface comm {
   created_at: string;
 }
 
-export default function showComment({ photo_id }: any) {
+export default function ShowComment({ photo_id }: any) {
   const [comments, setComments] = useState<comm[]>([]);
   useEffect(() => {
     const fetching = async () => {

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { type PutBlobResult } from "@vercel/blob";
 import { upload } from "@vercel/blob/client";
 import { useRouter } from "next/navigation";
-import Show from "@/components/dashboard/blobTest/show";
+import Show from "@/components/dashboard/blobTest/Show";
 import { useState, useRef } from "react";
 import logo from "@/components/images/logo.png";
 import home from "@/components/images/Home.png";
@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-export default function leftBar() {
+export default function LeftBar() {
   const [open, setOpen] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();

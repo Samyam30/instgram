@@ -21,7 +21,7 @@ interface post1 {
   email: string;
   created_at: string;
 }
-export default function otherProfile() {
+export default function OtherProfile() {
   const searchParams = useSearchParams();
   const email = searchParams.get("user");
   const followee_email = email;

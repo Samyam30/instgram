@@ -20,7 +20,7 @@ type props = {
   style: string;
   handleCss: () => void;
 };
-export default function story({
+export default function Story({
   propArray,
   open,
   setOpen,

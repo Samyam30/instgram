@@ -3,7 +3,7 @@ import Image from "next/image";
 import user from "@/components/images/User.png";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
-import Navbar from "@/components/header/header";
+import Navbar from "@/components/header/Header";
 interface email {
   followee_email: string | null;
 }
@@ -14,7 +14,7 @@ interface follo {
 }
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-export default function userDet({ followee_email }: email) {
+export default function UserDet({ followee_email }: email) {
   const [followStat, setFollowStat] = useState<follo[]>([]);
   const { data: session, status } = useSession();
   const follower_email = session?.user?.email;

@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import DispMsg from "@/components/dashboard/messaging/dispMsg";
+import DispMsg from "@/components/dashboard/messaging/DispMsg";
 import messages from "@/components/images/Messenger.png";
 
 const socket = io("ws://localhost:5000"); // Ensure this matches your server setup

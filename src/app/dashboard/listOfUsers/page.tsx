@@ -8,7 +8,7 @@ interface data {
   email: string;
   password: string;
 }
-export default function listOfUsers() {
+export default function ListOfUsers() {
   const router = useRouter();
   const [data, setData] = useState<data[]>([]);
   const userList = async () => {
