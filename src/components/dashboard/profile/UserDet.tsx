@@ -91,8 +91,8 @@ export default function UserDet({ followee_email }: email) {
     <div>
       {same ? <Navbar /> : null}
 
-      <div className="page1 flex flex-row gap-5 ml-[60px]">
-        <Image src={user} alt="user" className="h-[25px] w-[25px]" />
+      <div className="page1 flex flex-row gap-2 ml-[60px]">
+        <Image src={user} alt="user" className="h-[40px] w-[40px]" />
         <div className="ml-[10px]">{followee_email}</div>
         {same ? null : (
           <Button
@@ -100,17 +100,6 @@ export default function UserDet({ followee_email }: email) {
             onClick={follow}
           >
             {fla ? <span>Following</span> : <span>follow</span>}
-            {/* {followStat &&
-              followStat.map((item) => {
-                if (
-                  item.followee_email === followee_email &&
-                  item.follower_email === follower_email
-                ) {
-                  return <span key={item.created_at}>Following</span>;
-                } else {
-                  return <span key={item.followee_email}>follow</span>;
-                }
-              })} */}
           </Button>
         )}
         {same ? null : (
