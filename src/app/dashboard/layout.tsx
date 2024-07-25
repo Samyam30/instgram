@@ -1,6 +1,6 @@
 "use client";
 
-import LeftBar from "../../components/dashboard/leftBar/leftBar";
+import LeftBar from "../../components/dashboard/leftBar/LeftBar";
 import { useSession, getSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 export default function AuthLayout({

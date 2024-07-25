@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Headerq from "@/components/header/Header";
+import Headerq from "@/components/header/header";
 import SessionProvider from "@/components/auth/Provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/authOption";

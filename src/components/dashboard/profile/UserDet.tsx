@@ -3,7 +3,7 @@ import Image from "next/image";
 import user from "@/components/images/User.png";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
-import Navbar from "@/components/header/Header";
+import Navbar from "@/components/header/header";
 interface email {
   followee_email: string | null;
 }
