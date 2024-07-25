@@ -19,7 +19,7 @@ import { Label } from "@/components/ui/label";
 import comment from "@/components/images/Comment.png";
 import share from "@/components/images/Share.png";
 import bookmark from "@/components/images/Bookmark.png";
-
+import Link from "next/link";
 interface props {
   arrayProp: {
     id: string;
@@ -38,7 +38,13 @@ const CardPost: React.FC<props> = ({ arrayProp }) => {
             <Card className="w-4/5 mt-4 mb-4">
               <CardHeader>
                 <CardTitle className="font-normal text-sm ml-2 flex flex-row justify-between">
-                  <div>{item.email}</div>
+                  <div>
+                    <Link
+                      href={`/dashboard/profile/otherProfile?user=${item.email}`}
+                    >
+                      {item.email}
+                    </Link>
+                  </div>
                   <Image src={more} alt="more" className="h-[25px] w-[25px]" />
                 </CardTitle>
               </CardHeader>

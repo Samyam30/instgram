@@ -45,7 +45,7 @@ export default function Story({
         <DialogHeader>
           <DialogTitle>{propArray.email}</DialogTitle>
           <DialogDescription className="flex items-center justify-center">
-            <Image
+            <img
               alt="its image"
               src={propArray.iamge}
               className="h-[300px] w-[200px] mt-[20px]"

@@ -24,7 +24,9 @@ export default function StroryDisp() {
   useEffect(() => {
     const callStory = async () => {
       try {
-        const data = await fetch("/api/dashboard/story/getStory");
+        const data = await fetch("/api/dashboard/story/getStory", {
+          next: { revalidate: 1 },
+        });
         const dat1 = await data.json();
         setStoryData(dat1.data.rows);
       } catch (err) {

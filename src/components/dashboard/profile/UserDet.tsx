@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 export default function UserDet({ followee_email }: email) {
   const [followStat, setFollowStat] = useState<follo[]>([]);
   const { data: session, status } = useSession();
+  const [flag, setFlag] = useState<boolean[]>([]);
   const follower_email = session?.user?.email;
   const router = useRouter();
   var same = false;
@@ -67,6 +68,25 @@ export default function UserDet({ followee_email }: email) {
       console.error("Registration Failed:", error);
     }
   }
+  useEffect(() => {
+    setFlag(
+      followStat.map((item) => {
+        if (
+          item.followee_email === followee_email &&
+          item.follower_email === follower_email
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
+  }, [followStat]);
+
+  const fla: any = flag.find((stat) => {
+    return stat == true;
+  });
+  console.log(flag);
   return (
     <div>
       {same ? <Navbar /> : null}
@@ -79,7 +99,8 @@ export default function UserDet({ followee_email }: email) {
             className="border-solid border-[1.5px] rounded-lg border-zinc-700 text-zinc-50 bg-zinc-700 w-[70px] h-[40px]"
             onClick={follow}
           >
-            {followStat &&
+            {fla ? <span>Following</span> : <span>follow</span>}
+            {/* {followStat &&
               followStat.map((item) => {
                 if (
                   item.followee_email === followee_email &&
@@ -89,8 +110,7 @@ export default function UserDet({ followee_email }: email) {
                 } else {
                   return <span key={item.followee_email}>follow</span>;
                 }
-                return null;
-              })}
+              })} */}
           </Button>
         )}
         {same ? null : (
