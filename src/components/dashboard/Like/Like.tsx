@@ -17,7 +17,7 @@ export default function Like({ email, photo_id }: lik) {
   const [like, setLike] = useState<likeSchema[]>([]);
   const [flagq, setFlagq] = useState(false);
   var count = 0;
-  var click = 0;
+  const [click, setClick] = useState<boolean>(false);
   console.log(email, photo_id);
   useEffect(() => {
     const fetching = async () => {
@@ -27,12 +27,13 @@ export default function Like({ email, photo_id }: lik) {
         });
         const res = await data.json();
         setLike(res.data.rows);
+        console.log("fetching");
       } catch (err) {
         console.log("error has occured while fetching Likes " + err);
       }
     };
     fetching();
-  }, [count, click]);
+  }, [click]);
   console.log(Like);
   like.forEach((item) => {
     if (item.photo_id === photo_id) {
@@ -40,8 +41,6 @@ export default function Like({ email, photo_id }: lik) {
     }
   });
   async function handleLike1() {
-    click++;
-    setFlagq(!flagq);
     try {
       const response = await fetch("/api/dashboard/likes", {
         method: "POST",
@@ -60,22 +59,30 @@ export default function Like({ email, photo_id }: lik) {
 
       // Process response here
       console.log("Registration Successful", await response.json());
+      setClick(!click);
     } catch (error: any) {
       console.error("Registration Failed:", error);
     }
   }
 
-  function handleLike() {
-    console.log("docule cliked " + flagq);
-    setFlagq(!flagq);
-  }
-
   return (
-    <div onClick={handleLike1}>
+    <div>
       {flagq ? (
-        <Image src={liked} alt="liked" className="h-[25px] w-[25px] mt-[3px]" />
+        <Image
+          src={liked}
+          alt="liked"
+          className="h-[25px] w-[25px] mt-[3px]"
+          onClick={() => {
+            count--;
+          }}
+        />
       ) : (
-        <Image src={like1} alt="like" className="h-[20px] w-[25px] mt-[3px]" />
+        <Image
+          src={like1}
+          alt="like"
+          className="h-[20px] w-[25px] mt-[3px]"
+          onClick={handleLike1}
+        />
       )}
       <h1 className="ml-[7px]">{count}</h1>
     </div>
