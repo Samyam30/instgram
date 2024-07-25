@@ -6,9 +6,8 @@ import liked from "@/components/images/liked.png";
 interface lik {
   email: string;
   photo_id: any;
- 
 }
-export default function like({ email, photo_id,  }: lik) {
+export default function like({ email, photo_id }: lik) {
   const [like, setLike] = useState<number>(0);
   const [flagq, setFlagq] = useState(false);
   // console.log(email,photo_id);

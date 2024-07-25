@@ -1,17 +1,37 @@
-import messages from "@/components/images/Messenger.png";
-export default function dispMsg({ messageReceived, message, id }: any) {
-  return (
-    <>
-      <div className="border-[1.5px] border-solid border-blue-600 max-w-[300px] w-auto bg-blue-600 rounded-lg h-auto max-h-[100px] ml-96 mr-0 mt-4 ">
-        {messageReceived.message}
-      </div>
+interface DispMsgProps {
+  messageReceived: {
+    text: string;
+    email: string;
+  };
+  id: string;
+  sessionEmail: string | null | undefined;
+}
 
-      <div className="border-[1.5px] border-solid border-zinc-700 max-w-[300px] w-auto bg-zinc-500 rounded-lg h-auto max-h-[100px] ml-5 mt-4">
-        Message:{" "}
-        <div key={id}>
-          {messageReceived.email}:{messageReceived.text}
-        </div>
+export default function DispMsg({
+  messageReceived,
+  id,
+  sessionEmail,
+}: DispMsgProps) {
+  const isSent = messageReceived.email === sessionEmail;
+
+  return (
+    <div
+      className={`border-[1.5px] border-solid rounded-lg h-auto max-h-[100px] mt-4 ${
+        isSent
+          ? "border-blue-600 bg-blue-600 ml-auto mr-0"
+          : "border-zinc-700 bg-zinc-500 mr-auto ml-5"
+      }`}
+      style={{ maxWidth: "300px", width: "auto" }}
+    >
+      <div key={id}>
+        {isSent ? (
+          <div className="text-right">{messageReceived.text}</div>
+        ) : (
+          <div>
+            {messageReceived.email}: {messageReceived.text}
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
