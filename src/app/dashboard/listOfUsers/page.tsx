@@ -13,7 +13,9 @@ export default function ListOfUsers() {
   const [data, setData] = useState<data[]>([]);
   const userList = async () => {
     try {
-      const dat = await fetch("/api/getUsers");
+      const dat = await fetch("/api/getUsers", {
+        next: { revalidate: 1 },
+      });
       const users = await dat.json();
       setData(users.data.rows);
     } catch (err) {

@@ -13,6 +13,7 @@ interface Photos {
 }
 
 export default function PostStory({ iamge }: Photos) {
+  const [flag, setFlag] = useState(false);
   const { data: session, status } = useSession();
   console.log("iamge 1 is " + iamge);
   const [formdata, setFormdata] = useState<PostsForm>({
@@ -53,6 +54,7 @@ export default function PostStory({ iamge }: Photos) {
 
       // Process response here
       console.log("Registration Successful", await response.json());
+      setFlag(!flag);
     } catch (error: any) {
       console.error("Registration Failed:", error);
     }
@@ -70,7 +72,7 @@ export default function PostStory({ iamge }: Photos) {
           value={formdata.email}
         />
         <br />
-        <Button type="submit">Post</Button>
+        {flag ? <Button>Posted</Button> : <Button type="submit">Post</Button>}
       </form>
     </>
   );

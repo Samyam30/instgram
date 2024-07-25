@@ -28,7 +28,9 @@ export default function UserDet({ followee_email }: email) {
   useEffect(() => {
     async function followStatus() {
       try {
-        const data = await fetch("/api/UserProfile/getProfile");
+        const data = await fetch("/api/UserProfile/getProfile", {
+          next: { revalidate: 1 },
+        });
         const data1 = await data.json();
         setFollowStat(data1.data.rows);
       } catch (err) {

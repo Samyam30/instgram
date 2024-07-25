@@ -13,6 +13,7 @@ interface Photos {
 
 export default function PostPhotos({ image_url }: Photos) {
   const { data: session, status } = useSession();
+  const [flag, setFlag] = useState(false);
   console.log("iamge 1 is " + image_url);
   const [formdata, setFormdata] = useState<PostsForm>({
     email: session?.user?.email ?? "",
@@ -52,6 +53,7 @@ export default function PostPhotos({ image_url }: Photos) {
 
       // Process response here
       console.log("Registration Successful", await response.json());
+      setFlag(!flag);
     } catch (error: any) {
       console.error("Registration Failed:", error);
     }
@@ -70,7 +72,7 @@ export default function PostPhotos({ image_url }: Photos) {
           value={formdata.email}
         />
         <br />
-        <Button type="submit">Post</Button>
+        {flag ? <Button>Posted</Button> : <Button type="submit">Post</Button>}
       </form>
     </>
   );

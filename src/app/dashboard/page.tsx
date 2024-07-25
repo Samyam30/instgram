@@ -19,7 +19,9 @@ export default function Dashboard() {
   useEffect(() => {
     const data1 = async () => {
       try {
-        const posts = await fetch("/api/dashboard/postPhotos/getPosts");
+        const posts = await fetch("/api/dashboard/postPhotos/getPosts", {
+          next: { revalidate: 1 },
+        });
         const res = await posts.json();
         setPostinfo(res.data.rows);
       } catch (err) {
@@ -31,7 +33,9 @@ export default function Dashboard() {
   useEffect(() => {
     const data2 = async () => {
       try {
-        const posts = await fetch("/api/getUsers");
+        const posts = await fetch("/api/getUsers", {
+          next: { revalidate: 1 },
+        });
         const res = await posts.json();
         setUsers(res.data.rows);
       } catch (err) {

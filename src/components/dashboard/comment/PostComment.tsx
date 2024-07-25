@@ -7,6 +7,7 @@ interface data {
 }
 export default function PostComment({ email, photo_id }: data) {
   const [comment, setComment] = useState<string>("");
+  const [flag, setFlag] = useState(false);
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     setComment(event.target.value);
@@ -33,6 +34,7 @@ export default function PostComment({ email, photo_id }: data) {
 
       // Process response here
       console.log("Registration Successful", await response.json());
+      setFlag(!flag);
     } catch (error: any) {
       console.error("Registration Failed:", error);
     }
@@ -53,13 +55,19 @@ export default function PostComment({ email, photo_id }: data) {
           placeholder="Add a comment"
           onChange={handleChange}
         ></input>
-        <Button
-          type="submit"
-          id="postComment"
-          className="border-t-[1.5px] border-t-solid border-t-black rounded-none bg-white text-blue-500 font-bold hover:bg-white"
-        >
-          Post
-        </Button>
+        {flag ? (
+          <Button className="border-t-[1.5px] border-t-solid border-t-black rounded-none bg-white text-blue-500 font-bold hover:bg-white">
+            Posted
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            id="postComment"
+            className="border-t-[1.5px] border-t-solid border-t-black rounded-none bg-white text-blue-500 font-bold hover:bg-white"
+          >
+            Post
+          </Button>
+        )}
       </form>
     </div>
   );
