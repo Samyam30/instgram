@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { string } from "zod";
+import Image from "next/image";
 type props = {
   propArray: {
     id: any;
@@ -44,7 +45,8 @@ export default function Story({
         <DialogHeader>
           <DialogTitle>{propArray.email}</DialogTitle>
           <DialogDescription className="flex items-center justify-center">
-            <img
+            <Image
+              alt="its image"
               src={propArray.iamge}
               className="h-[300px] w-[200px] mt-[20px]"
             />

@@ -84,7 +84,7 @@ export default function ProfileIcon({ email }: any) {
         )} */}
         {image && (
           <div>
-            <img
+            <Image
               src={image as string}
               alt="Avatar"
               className="h-[300px] w-[300px]"

@@ -50,7 +50,7 @@ export default function OtherProfile() {
               return (
                 <Card className="w-[350px] h-[200]" key={item.id}>
                   <CardContent className="flex items-center justify-center">
-                    <img
+                    <Image
                       src={item.image_url}
                       alt={item.created_at}
                       className="w-[330px] h-[200px] pt-[5px] "

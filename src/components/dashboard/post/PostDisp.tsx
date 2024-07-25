@@ -46,11 +46,11 @@ const CardPost: React.FC<props> = ({ arrayProp }) => {
                 <form>
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5 ">
-                      <img
+                      <Image
                         src={item.image_url}
                         alt="imgPost"
                         className="w-[600px] h-[300px] flex-2 border-[1.5px] border-zinc-200 rounded-lg border-solid p-5"
-                      ></img>
+                      />
                       <div className="flex flex-row justify-between">
                         <div className="flex flex-row gap-2">
                           <Like email={item.email} photo_id={item.id} />

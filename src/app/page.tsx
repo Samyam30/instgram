@@ -5,7 +5,7 @@ export default function Home() {
   const router = useRouter();
   function handlelog() {
     console.log("clicked");
-    router.push("/auth/Login");
+    router.push("/auth/login");
   }
   console.log("hello");
   return (
