@@ -41,7 +41,7 @@ export default function UserDet({ followee_email }: email) {
       }
     }
     followStatus();
-  }, [followee_email]);
+  }, [followee_email, follower_email]);
   console.log(followStat);
 
   async function follow() {
