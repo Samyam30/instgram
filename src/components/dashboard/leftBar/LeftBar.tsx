@@ -66,7 +66,7 @@ export default function LeftBar() {
         <Image
           src={logo}
           alt="logo"
-          className="w-[100px] h-[50px] mb-[30px]"
+          className="log w-[100px] h-[50px] mb-[30px]"
           priority
         />
         <div

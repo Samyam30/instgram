@@ -60,7 +60,7 @@ const App = () => {
   return (
     <div className="page">
       <div className="App">
-        <div className="flex flex-col -ml-5 mr-12 my-6 border-[1.5px] rounded-2xl border-solid border-zinc-900">
+        <div className="flex flex-col mr-12 my-6 border-[1.5px] rounded-2xl border-solid border-zinc-900">
           <div className="h-[70px] border-b-[1.5px] border-solid border-black">
             <input
               readOnly
@@ -81,21 +81,21 @@ const App = () => {
               ))}
             </div>
           </div>
-          <div className="h-[75px] mx-[20px] my-[20px] flex flex-row flex-wrap gap-[20px] w-[650px] border-solid border-[1.5px] border-black rounded-xl">
+          <div className="h-auto mx-[35px] my-[20px] flex flex-row flex-wrap gap-[20px] w-10/12 border-solid border-[1.5px] border-black rounded-xl">
             <input
-              className="w-[420px] h-[70px] hover:border-0 outline-none pl-4"
+              className="chatIp w-1/2 hover:border-0 outline-none pl-4"
               placeholder="Message"
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
             <button
-              className="border-l-[1.5px] border-l-solid border-black h-[70px] text-blue-700 w-[100px] font-bold -ml-5 text-center"
+              className="border-l-[1.5px] border-l-solid border-black h-auto text-blue-700 w-1/5 font-bold text-center p-[10px]"
               onClick={sendMessage}
             >
               Send message
             </button>
             <button
-              className="border-l-[1.5px] border-l-solid border-black h-[70px] text-red-600 w-[100px] font-bold text-center"
+              className="border-l-[1.5px] border-l-solid border-black h-auto text-red-600 w-1/5 font-bold text-center"
               onClick={reload}
             >
               Reload

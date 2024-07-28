@@ -39,19 +39,21 @@ export default function AuthLayout({
         {data.map((item) => {
           return (
             <div
-              className=" border-[1.5px] border-solid border-black rounded-lg w-[auto] mr-[20px] ml-[20px] mt-[30px] pl-[5px] pt-[13px] h-[60px]"
+              className="flex flex-row gap-1 border-[1.5px]  border-solid border-black rounded-lg min-w-[150px] w-[auto] mr-[20px] ml-[20px] mt-[30px] px-[10px] pt-[13px] h-[60px]  "
               key={item.id}
               id="friends"
               onClick={() => {
                 chat(item.email);
               }}
             >
-              {item.id}: {item.email}
+              <p>
+                {item.id}: {item.email}
+              </p>
             </div>
           );
         })}
       </div>
-      <div className=" -ml-[150px]  w-3/4">{children}</div>
+      <div className=" w-3/4">{children}</div>
     </div>
   );
 }
