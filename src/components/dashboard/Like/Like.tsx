@@ -16,8 +16,8 @@
 // export default function Like({ email, photo_id }: lik) {
 //   const [like, setLike] = useState<likeSchema[]>([]);
 //   const [flagq, setFlagq] = useState(false);
-//   const [count, setCount] = useState(0);
-//   const [likeStat, setLikeStat] = useState(false);
+//   var count = 0;
+//   const [likeStat,setLikeStat]=useState(false)
 //   const [click, setClick] = useState<boolean>(false);
 //   console.log(email, photo_id);
 //   useEffect(() => {
@@ -36,12 +36,11 @@
 //     fetching();
 //   }, [click]);
 //   console.log(Like);
-//   const item = like.find((item) => item.photo_id === photo_id);
-//   if (item) {
-//     setCount(count + (likeStat ? -1 : 1));
-//     setLikeStat(!likeStat);
-//   }
-
+//   like.forEach((item) => {
+//     if (item.photo_id === photo_id) {
+//       count++;
+//     }
+//   });
 //   async function handleLike1() {
 //     try {
 //       const response = await fetch("/api/dashboard/likes", {
@@ -68,15 +67,23 @@
 //   }
 
 //   return (
-//     <div onClick={handleLike1}>
+//     <div>
 //       {flagq ? (
 //         <Image
 //           src={liked}
 //           alt="liked"
-//           className="h-[25px] w-[25px] mt-[3px] "
+//           className="h-[25px] w-[25px] mt-[3px]"
+//           onClick={() => {
+//             count--;
+//           }}
 //         />
 //       ) : (
-//         <Image src={like1} alt="like" className="h-[20px] w-[25px] mt-[3px]" />
+//         <Image
+//           src={like1}
+//           alt="like"
+//           className="h-[20px] w-[25px] mt-[3px]"
+//           onClick={handleLike1}
+//         />
 //       )}
 //       <h1 className="ml-[7px]">{count}</h1>
 //     </div>
@@ -124,37 +131,48 @@ export default function Like({ email, photo_id }: lik) {
   }, [click]);
 
   useEffect(() => {
-    const item = like.find((item) => item.photo_id === photo_id);
+    const item = like.filter((item) => item.photo_id === photo_id);
     if (item) {
-      setLikeStat(true);
-      setCount((prevCount) => prevCount + 1);
-    } else {
-      setLikeStat(false);
-      setCount((prevCount) => Math.max(prevCount - 1, 0));
+      const fla = item.find((it) => it.email === email);
+      if (fla) {
+        setLikeStat(true);
+        setCount(item.length);
+      } else {
+        setLikeStat(false);
+        setCount((prevCount) => Math.max(prevCount - 1, 0));
+      }
+      // setLikeStat(true);
+      // setCount(item.length+1);
     }
   }, [like, photo_id]);
 
   async function handleLike1() {
-    try {
-      const response = await fetch("/api/dashboard/likes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, photo_id }),
-      });
-      console.log(response);
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          `Network response was not ok: ${errorData.message || "Unknown error"}`
-        );
-      }
+    if (likeStat === false) {
+      try {
+        const response = await fetch("/api/dashboard/likes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, photo_id }),
+        });
+        console.log(response);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            `Network response was not ok: ${
+              errorData.message || "Unknown error"
+            }`
+          );
+        }
 
-      console.log("Like action successful", await response.json());
-      setClick(!click);
-    } catch (error: any) {
-      console.error("Like action failed:", error);
+        console.log("Like action successful", await response.json());
+        setClick(!click);
+      } catch (error: any) {
+        console.error("Like action failed:", error);
+      }
+    } else {
+      console.log("already liked");
     }
   }
 
