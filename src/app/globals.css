@@ -197,6 +197,8 @@ html {
   background-color: rgba(41, 104, 238, 0.451);
   color: black;
   backdrop-filter: blur(5px);
+  width: auto;
+  padding: 5px;
 }
 @media (max-width: 480px) {
   #friends {
